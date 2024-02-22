@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "build": "ncc build src/index.ts -o dist --target es2020",
+    "test": "vitest",
     "typecheck": "tsc --noEmit",
     "dev": "tsx src/index.ts",
     "dev watch": "tsx watch src/index.ts"
