@@ -7,8 +7,9 @@
     "build": "ncc build src/index.ts -o dist --target es2020",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "dev": "tsx src/index.ts",
-    "dev watch": "tsx watch src/index.ts"
+    "start": "tsx src/main.ts",
+    "dev": "tsx src/main.ts",
+    "dev watch": "tsx watch src/main.ts"
   },
   "author": "",
   "license": "ISC",
