@@ -1,5 +1,6 @@
 import { argv } from "process";
 import { crawlPage } from "./utils/crawlPage";
+import { genReport } from "./utils/generateReport";
 
 async function main() {
   console.log(argv.length);
@@ -14,18 +15,7 @@ async function main() {
   console.log("Running a script on:", baseURL);
   try {
     const pages = await crawlPage(baseURL, baseURL, {});
-    console.log(`
-=========================== ===========================
-=========================== ===========================
-=========================== ===========================
-=========================== ===========================
-  Crawl finished!
-  Total pages: ${Object.keys(pages).length}
-  Object: ${JSON.stringify(pages, null, 2)}
-=========================== ===========================
-=========================== ===========================
-=========================== ===========================
-`);
+    genReport(pages);
   } catch (e) {
     console.error(e);
   }

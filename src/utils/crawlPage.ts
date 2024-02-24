@@ -13,12 +13,10 @@ export async function crawlPage(
   const curURLNorm = normalizeURL(currentURL);
 
   if (baseURLObj.hostname != currentURLObj.hostname) {
-    console.log("Different hostnames, skipping", currentURL);
     return pages;
   }
 
   if (pages?.[curURLNorm] >= 0) {
-    console.log("Already visited", currentURL);
     pages[curURLNorm] += 1;
     return pages;
   }
@@ -28,7 +26,6 @@ export async function crawlPage(
   try {
     console.log("Fetching", currentURL);
     currentCount += 1;
-    console.log("current count", currentCount);
     const page = await fetch(currentURL);
     if (!page.ok) throw new Error("Page couldnt be fetched");
     const contentType = page.headers.get("Content-Type");
@@ -43,6 +40,7 @@ export async function crawlPage(
     }
   } catch (e) {
     console.error("Error fetching", currentURL, e);
+    return pages;
   }
 
   return pages;
