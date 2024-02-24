@@ -13,9 +13,21 @@ async function main() {
   const baseURL = argv[2];
   console.log("Running a script on:", baseURL);
   try {
-    await crawlPage(baseURL);
+    const pages = await crawlPage(baseURL, baseURL, {});
+    console.log(`
+=========================== ===========================
+=========================== ===========================
+=========================== ===========================
+=========================== ===========================
+  Crawl finished!
+  Total pages: ${Object.keys(pages).length}
+  Object: ${JSON.stringify(pages, null, 2)}
+=========================== ===========================
+=========================== ===========================
+=========================== ===========================
+`);
   } catch (e) {
-    console.log("Page fetch failed");
+    console.error(e);
   }
 }
 

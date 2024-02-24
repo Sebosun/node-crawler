@@ -7,7 +7,7 @@
     "build": "ncc build src/index.ts -o dist --target es2020",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "start": "tsx src/main.ts",
+    "start": "tsx --inspect src/main.ts",
     "dev": "tsx src/main.ts",
     "dev watch": "tsx watch src/main.ts"
   },
